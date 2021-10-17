@@ -1,6 +1,3 @@
-//username & password setup
-// blog post - post title, contents, post creator’s username, and date created
-
 const sequelize = require('../config/connection');
 const seedPosts = require('./postData');
 
