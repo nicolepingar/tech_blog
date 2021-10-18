@@ -53,6 +53,38 @@ router.get('/post/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.get('/login', (req, res) => {
+    // If the user is already logged in, redirect the request to another route
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
+
+    res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+    // If the user is already logged in, redirect the request to another route
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
+
+    res.render('signup');
+});
+
+router.get('/post', (req, res) => {
+    // If the user is already logged in, redirect the request to another route
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
+
+    res.render('post');
+});
+
+
 // CREATE a new post
 router.post('/', withAuth, async (req, res) => {
     try {
