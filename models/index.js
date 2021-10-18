@@ -20,5 +20,13 @@ Comment.belongsTo(Post, {
   foreignKey: 'post_id',
 });
 
+User.hasMany(Comment, {
+  foreignKey: 'user_id',
+  onDelete: "CASCADE", // when a user is deleted, associated comments are also deleted
+});
+
+Comment.belongsTo(User, {
+  foreignKey: 'user_id',
+});
 
 module.exports = { User, Post, Comment };

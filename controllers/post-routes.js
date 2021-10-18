@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
-
+const withAuth = require('../utils/auth');
+//!!! get all of users posts for dashboard
 // GET all posts for homepage
 router.get('/', async (req, res) => {
     try {
@@ -25,7 +26,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET one post for homepage
-router.get('/post/:id', async (req, res) => {
+router.get('/post/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
             include: [
@@ -55,7 +56,7 @@ router.get('/post/:id', async (req, res) => {
 });
 
 // CREATE a new post
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const postData = await Post.create({
             user_id: req.body.user_id,
@@ -70,7 +71,7 @@ router.post('/', async (req, res) => {
 // CREATE a new comment
 
 // UPDATE a post
-router.put('/:id', async (res, req) => {
+router.put('/:id', withAuth, async (res, req) => {
     try {
         const postData = await Post.update(req.body, {
             where: {
@@ -91,7 +92,7 @@ router.put('/:id', async (res, req) => {
 // UPDATE a comment 
 
 // DELETE a post
-router.delete('/:id', async (res, req) => {
+router.delete('/:id', withAuth, async (res, req) => {
     try {
         const postData = await Post.destroy({
             where: {
