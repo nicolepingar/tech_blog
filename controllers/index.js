@@ -6,4 +6,4 @@ const postRoutes = require('./post-routes');
 router.use('/', postRoutes);
 router.use('/api', apiRoutes)
 
-module.exports = router
+module.exports = router;

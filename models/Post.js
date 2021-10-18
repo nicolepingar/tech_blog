@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 // blog post - post title, contents, post creator’s username, and date created
-class Post extends Model {}
+class Post extends Model { }
 
 Post.init(
   {

@@ -24,7 +24,6 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
 // GET one post for homepage
 router.get('/post/:id', withAuth, async (req, res) => {
     try {
@@ -54,7 +53,6 @@ router.get('/post/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
-
 // CREATE a new post
 router.post('/', withAuth, async (req, res) => {
     try {
@@ -67,9 +65,6 @@ router.post('/', withAuth, async (req, res) => {
         res.status(400).json(err);
     }
 });
-
-// CREATE a new comment
-
 // UPDATE a post
 router.put('/:id', withAuth, async (res, req) => {
     try {
@@ -88,9 +83,6 @@ router.put('/:id', withAuth, async (res, req) => {
         res.status(500).json(err);
     }
 });
-
-// UPDATE a comment 
-
 // DELETE a post
 router.delete('/:id', withAuth, async (res, req) => {
     try {
@@ -108,4 +100,5 @@ router.delete('/:id', withAuth, async (res, req) => {
         res.status(500).json(err);
     }
 });
-// DELETE a comment
+
+module.exports = router;
