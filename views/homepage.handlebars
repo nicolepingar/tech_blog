@@ -6,7 +6,7 @@
         <a href="#" class="btn btn-primary">Comment</a>
 
         <div class="card-footer text-muted">
-            Made by: {{users.username}} on {{format_date date}}.
+            Posted by: {{user.username}} on {{format_date createdAt}}.
         </div>
         {{/each}}
         <a href="/post" class="btn btn-primary">Make a Post</a>

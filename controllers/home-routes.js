@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
                 },
             ],
         });
+        console.log(postData);
         const posts = postData.map((post) =>
             post.get({ plain: true })
         );
@@ -74,11 +75,12 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/post', (req, res) => {
+    console.log(!req.session.loggedIn);
     // If the user is already logged in, redirect the request to another route
-    // if (req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
+    if (!req.session.loggedIn) {
+        res.redirect('/login');
+        return;
+    }
 
     res.render('post');
 });
