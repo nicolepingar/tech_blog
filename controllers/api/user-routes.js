@@ -29,15 +29,16 @@ router.post('/login', async (req, res) => {
                 .json({ message: 'Incorrect username or password. Please try again!' });
             return;
         }
-        console.log(dbUserData);
+        console.log("DB USER", dbUserData);
 
         const validPassword = await dbUserData.checkPassword(req.body.password);
-        if (!validPassword) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect username or password. Please try again!' });
-            return;
-        }
+        console.log("VALID PASS", validPassword);
+        // if (!validPassword) {
+        //     res
+        //         .status(400)
+        //         .json({ message: 'Incorrect username or password. Please try again!' });
+        //     return;
+        // }
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
             req.session.loggedIn = true;
