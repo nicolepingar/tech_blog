@@ -20,6 +20,8 @@ router.get('/', async (req, res) => {
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn
+
+
         });
     } catch (err) {
         console.log(err);
@@ -36,7 +38,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
                     attributes: [
                         "id",
                         "comment_contents",
-                        "comment_date" //// !!!!! user id?
+                        "post_id"
                     ]
                 },
                 {
@@ -49,7 +51,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
             ],
         });
         const post = postData.get({ plain: true });
-        res.render('post', { post });
+        res.render('postSingle', { post });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

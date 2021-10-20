@@ -1,0 +1,13 @@
+<div class="card text-center">
+    <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.contents}}</p>
+        <a href="#" class="btn btn-primary">Comment</a>
+        <a href="#" class="btn btn-primary">Delete</a>
+        <a href="#" class="btn btn-primary">Update</a>
+
+        <div class="card-footer text-muted">
+            Posted by: {{post.user.username}} on {{format_date post.createdAt}}.
+        </div>
+    </div>
+</div>
