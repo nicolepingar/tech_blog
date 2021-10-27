@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
-//!!! get all of users posts for dashboard
 // GET all posts for homepage
 router.get('/', async (req, res) => {
     try {
@@ -17,11 +16,10 @@ router.get('/', async (req, res) => {
         const posts = postData.map((post) =>
             post.get({ plain: true })
         );
+        console.log(posts);
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn
-
-
         });
     } catch (err) {
         console.log(err);
@@ -57,7 +55,24 @@ router.get('/post/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
-
+// get all posts by logged in user
+//!!!! idk if this include is gonna work
+router.get('/dashboard', withAuth, async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.session.user_id, {
+            include: [{ model: Post }, { model: Comment }]
+        });
+        const posts = userData.get({ plain: true });
+        console.log("POSTS", posts);
+        res.render('dashboard', {
+            posts,
+            loggedIn: req.session.loggedIn
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+// login page
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
     if (req.session.loggedIn) {
@@ -66,7 +81,7 @@ router.get('/login', (req, res) => {
     }
     res.render('login');
 });
-
+// sign up page
 router.get('/signup', (req, res) => {
     // If the user is already logged in, redirect the request to another route
     if (req.session.loggedIn) {
@@ -75,7 +90,7 @@ router.get('/signup', (req, res) => {
     }
     res.render('signup');
 });
-
+// renders post page 
 router.get('/post', (req, res) => {
     console.log(!req.session.loggedIn);
     // If the user is already logged in, redirect the request to another route
