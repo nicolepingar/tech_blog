@@ -55,15 +55,13 @@ router.get('/post/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
-// get all posts by logged in user
-//!!!! idk if this include is gonna work
+// get all posts by logged in user for dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
             include: [{ model: Post }, { model: Comment }]
         });
         const posts = userData.get({ plain: true });
-        console.log("POSTS", posts);
         res.render('dashboard', {
             posts,
             loggedIn: req.session.loggedIn
@@ -72,6 +70,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 })
+
 // login page
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
@@ -92,7 +91,6 @@ router.get('/signup', (req, res) => {
 });
 // renders post page 
 router.get('/post', (req, res) => {
-    console.log(!req.session.loggedIn);
     // If the user is already logged in, redirect the request to another route
     if (!req.session.loggedIn) {
         res.redirect('/login');

@@ -5,7 +5,20 @@
             <h5 class="card-title">{{title}}</h5>
         </a>
         <p class="card-text">{{contents}}</p>
-        <a href="#" class="btn btn-primary">Comment</a>
+
+        <p>
+            <button id="{{id}}" class="btn btn-primary" type="button" data-toggle="collapse"
+                data-target="#collapseExample{{id}}" aria-expanded="false" aria-controls="collapseExample{{id}}">
+                Comment
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample{{id}}">
+            <div class="card card-body form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <a class="btn btn-primary postCommentButton" data-id="{{id}}">Post Comment</a>
+            </div>
+        </div>
+
 
         <div class="card-footer text-muted">
             Posted by: {{user.username}} on {{format_date createdAt}}.
@@ -14,3 +27,6 @@
         <a href="/post" class="btn btn-primary">Make a Post</a>
     </div>
 </div>
+
+
+<script src='/js/homepage.js'></script>
