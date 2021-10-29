@@ -15,21 +15,7 @@ router.post('/', withAuth, async (req, res) => {
         res.status(400).json(err);
     }
 });
-// CREATE a new comment 
-router.post('/', withAuth, async (req, res) => {
-    try {
-        const commentData = await Comment.create({
-            comment_contents: req.body.comment_contents,
-            user_id: req.session.user_id,
-            post_id: req.body.post_id,
-        });
-        res.status(200).json(commentData)
-        console.log("YOU GOT HERE!!");
-    } catch (err) {
-        console.log(err);
-        res.status(400).json(err);
-    }
-});
+
 // UPDATE a post
 router.put('/:id', withAuth, async (res, req) => {
     try {
