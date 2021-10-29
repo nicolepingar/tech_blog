@@ -1,16 +1,43 @@
 <div class="card text-center">
     <div class="card-body">
         {{#each posts.posts}}
-        <a href="/post/{{this.id}}">
-            <h5 class="card-title">{{this.title}}</h5>
-        </a>
-        <p class="card-text">{{this.contents}}</p>
-        <a href="#" class="btn btn-primary">Comment</a>
+        <div class="container">
+            <div class="row">
+                <a href="/post/{{this.id}}">
+                    <h5 class="card-title">{{this.title}}</h5>
+                </a>
+            </div>
+            <div class="row justify-content-center">
+                {{!-- <div class="col-1"> --}}
 
-        <div class="card-footer text-muted">
-            Posted on: {{format_date this.createdAt}}.
+                    {{!--
+                </div> --}}
+                {{!-- <div class="col-1"> --}}
+                    <p>
+                        <a id="{{id}}" data-toggle="collapse" data-target="#collapseExample{{id}}" aria-expanded="false"
+                            aria-controls="collapseExample{{id}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </p>
+                    <div class="collapse" id="collapseExample{{id}}">
+                        <div class="card card-body form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here"
+                                id="floatingTextarea"></textarea>
+                            <button class="btn btn-primary postCommentButton" data-id="{{id}}">Update Post</button>
+                        </div>
+                    </div>
+                    {{!--
+                </div> --}}
+            </div>
+
+            <p class="card-text">{{this.contents}}</p>
+            <i data-delete="{{this.id}}" class="fas fa-trash-alt"></i>
+
+
+            <div class="card-footer text-muted">
+                Posted on: {{format_date this.createdAt}}.
+            </div>
         </div>
         {{/each}}
-        <a href="/post" class="btn btn-primary">Make a Post</a>
     </div>
 </div>

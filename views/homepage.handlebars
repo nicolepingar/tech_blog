@@ -1,6 +1,6 @@
 <div class="card text-center">
+    {{#each posts as |post|}}
     <div class="card-body">
-        {{#each posts as |post|}}
         <a href="/post/{{id}}">
             <h5 class="card-title">{{title}}</h5>
         </a>
@@ -15,18 +15,18 @@
         <div class="collapse" id="collapseExample{{id}}">
             <div class="card card-body form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                <a class="btn btn-primary postCommentButton" data-id="{{id}}">Post Comment</a>
+                <button class="btn btn-primary postCommentButton" data-id="{{id}}">Post Comment</button>
             </div>
         </div>
-
-
-        <div class="card-footer text-muted">
-            Posted by: {{user.username}} on {{format_date createdAt}}.
-        </div>
-        {{/each}}
-        <a href="/post" class="btn btn-primary">Make a Post</a>
     </div>
+
+    <div class="card-footer text-muted">
+        Posted by: {{user.username}} on {{format_date createdAt}}.
+    </div>
+    {{/each}}
 </div>
+
+
 
 
 <script src='/js/homepage.js'></script>

@@ -49,7 +49,10 @@ router.get('/post/:id', withAuth, async (req, res) => {
             ],
         });
         const post = postData.get({ plain: true });
-        res.render('postSingle', { post });
+        res.render('postSingle', {
+            loggedIn: req.session.loggedIn,
+            post
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -70,7 +73,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 })
-
 // login page
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
