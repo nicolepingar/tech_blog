@@ -14,16 +14,16 @@
                 </div> --}}
                 {{!-- <div class="col-1"> --}}
                     <p>
-                        <a id="{{id}}" data-toggle="collapse" data-target="#collapseExample{{id}}" aria-expanded="false"
-                            aria-controls="collapseExample{{id}}">
+                        <a id="{{this.id}}" data-toggle="collapse" data-target="#collapseExample{{id}}"
+                            aria-expanded="false" aria-controls="collapseExample{{this.id}}">
                             <i class="fas fa-edit"></i>
                         </a>
                     </p>
-                    <div class="collapse" id="collapseExample{{id}}">
+                    <div class="collapse" id="collapseExample{{this.id}}">
                         <div class="card card-body form-floating">
                             <textarea class="form-control" placeholder="Leave a comment here"
                                 id="floatingTextarea"></textarea>
-                            <button class="btn btn-primary postCommentButton" data-id="{{id}}">Update Post</button>
+                            <button class="btn btn-primary postCommentButton" data-id="{{this.id}}">Update Post</button>
                         </div>
                     </div>
                     {{!--
@@ -31,7 +31,7 @@
             </div>
 
             <p class="card-text">{{this.contents}}</p>
-            <i data-delete="{{this.id}}" class="fas fa-trash-alt"></i>
+            <i data-delete="{{this.id}}" class="fas fa-trash-alt deletePost"></i>
 
 
             <div class="card-footer text-muted">
@@ -41,3 +41,6 @@
         {{/each}}
     </div>
 </div>
+
+
+<script src='/js/dashboard.js'></script>

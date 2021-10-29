@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
-
 // CREATE a new comment
 router.post('/', withAuth, async (req, res) => {
     if (!req.session.loggedIn) {
