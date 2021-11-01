@@ -7,9 +7,22 @@ router.get('/', async (req, res) => {
         const postData = await Post.findAll({
             include: [
                 {
-                    model: User,
-                    attributes: ['username'],
+                    model: Comment,
+                    attributes: [
+                        "id",
+                        "comment_contents",
+                        "user_id",
+                        "post_id"
+                    ],
                 },
+                {
+                    model: User,
+                    attributes: [
+                        "id",
+                        "username"
+                    ]
+                }
+
             ],
         });
         const posts = postData.map((post) =>
@@ -34,15 +47,17 @@ router.get('/post/:id', withAuth, async (req, res) => {
                     attributes: [
                         "id",
                         "comment_contents",
+                        "user_id",
                         "post_id"
-                    ]
-                },
-                {
-                    model: User,
-                    attributes: [
-                        "id",
-                        "username"
-                    ]
+                    ],
+                    include: [{
+                        model: User,
+                        attributes: [
+                            "id",
+                            "username"
+                        ]
+
+                    }]
                 },
             ],
         });
@@ -64,6 +79,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
             include: [{ model: Post }, { model: Comment }]
         });
         const posts = userData.get({ plain: true });
+        console.log(posts);
         res.render('dashboard', {
             posts,
             loggedIn: req.session.loggedIn

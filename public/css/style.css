@@ -25,3 +25,27 @@ a:link {
   .card-footer {
     border-bottom: 1px solid rgba(0,0,0,.125);
   }
+
+  .card {
+    border: black 2px solid;
+    margin: 10px 60px;
+
+  }
+
+  .btn-primary {
+    color: black;
+    background-color: #F8C8DC	;
+    border-color: transparent	;
+    
+  }
+
+  .card-title {
+    color: black;
+  }
+
+ 
+  .btn-primary:hover {
+    color: black;
+    background-color: #FF69B4	;
+    border-color: transparent	;
+  } 
