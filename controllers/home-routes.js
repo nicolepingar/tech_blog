@@ -5,6 +5,13 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
+            include: [{
+                model: User,
+                attributes: [
+                    "id",
+                    "username"
+                ],
+            },],
             include: [
                 {
                     model: Comment,
@@ -13,21 +20,13 @@ router.get('/', async (req, res) => {
                         "comment_contents",
                         "user_id",
                         "post_id"
-                    ],
-                },
-                {
-                    model: User,
-                    attributes: [
-                        "id",
-                        "username"
-                    ]
-                }
-
-            ],
+                    ], include: [{ model: User }],
+                }],
         });
         const posts = postData.map((post) =>
             post.get({ plain: true })
         );
+        console.log(posts[0].comments[0]);
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn

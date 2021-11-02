@@ -15,6 +15,7 @@
                 </div>
                 {{#each comments}}
                 <p>{{this.comment_contents}}</p>
+                <p>Commented by: {{this.user.username}}</p>
                 {{/each}}
                 <p>
                     <button id="{{id}}" class="btn btn-primary" type="button" data-toggle="collapse"
