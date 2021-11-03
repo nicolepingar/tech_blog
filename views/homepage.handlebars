@@ -1,33 +1,32 @@
 <div class="top-margin">
     {{#each posts as | post|}}
-
     <div class="card text-center">
-
-
         <div class="card-body">
             <div class="border-homepage">
                 <a href="/post/{{id}}">
                     <h5 class="card-title">{{title}}</h5>
                 </a>
                 <p class="card-text">{{contents}}</p>
-                <div class="card-header">
+                <div>
                     Comments:
                 </div>
                 {{#each comments}}
-                <p>{{this.comment_contents}}</p>
-                <p>Commented by: {{this.user.username}}</p>
+                <div class="row">
+                    <p class="col">{{this.user.username}} commented: "{{this.comment_contents}}"</p>
+                </div>
                 {{/each}}
                 <p>
                     <button id="{{id}}" class="btn btn-primary" type="button" data-toggle="collapse"
                         data-target="#collapseExample{{id}}" aria-expanded="false"
-                        aria-controls="collapseExample{{id}}">
+                        aria-controls="collapseExample{{id}}"><i class="far fa-plus-square"></i>
                         Comment
                     </button>
                 </p>
                 <div class="collapse" id="collapseExample{{id}}">
                     <div class="card card-body form-floating">
                         <textarea class="form-control class{{id}}" id="floatingTextarea"></textarea>
-                        <button class=" btn btn-primary postCommentButton" data-id="{{id}}">Post Comment</button>
+                        <button class="mx-auto btn btn-primary postCommentButton" data-id="{{id}}">Post
+                            Comment</button>
                     </div>
                 </div>
 
