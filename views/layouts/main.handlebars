@@ -20,21 +20,23 @@
                 <a id="makePost" class="btn btn-primary" role="button" href="/post"><i class="far fa-plus-square"></i>
                     New Post</a>
             </div>
+
             {{/if}}
         </header>
 
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">Home</a>
+                <a class="navbar-brand navbar-shadow" href="/">Home</a>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav"></div>
-                    <a class="navbar-brand" aria-current="page" href="/dashboard">Your Dashboard</a>
+                    <a class="navbar-brand navbar-shadow" aria-current="page" href="/dashboard" id="dashboard">Your
+                        Dashboard</a>
                     {{#if loggedIn}}
-                    <a class="navbar-brand" id="logout">Logout</a>
-                    <p class="navbar-brand">{{username}}</p>
+                    <a class="navbar-brand navbar-shadow" id="logout">Logout</a>
+
                     {{else}}
-                    <a class="navbar-brand" href="/login">Login</a>
+                    <a class="navbar-brand navbar-shadow" href="/login">Login</a>
                     {{/if}}
+                    <a class="navbar-brand usernameMain"><i class="fas fa-user"></i> {{usernameMain}}</a>
                 </div>
             </div>
         </nav>
@@ -43,7 +45,11 @@
         {{/if}}
     </div>
 
-    {{{body}}}
+    <div id="body">
+
+        {{{body}}}
+
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

@@ -1,9 +1,33 @@
+body {
+  background-color: #F8C8DC;
+}
+
 #makePost {
   width: 125px;
 }
 
+#logout {
+  cursor: pointer;
+}
+
+#dashboard {
+  border-left: black solid 1px;
+  border-right: black solid 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.navbar-shadow:hover {
+  text-shadow: 1px 1px 10px black;
+}
+
 .card-text {
   border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.usernameMain {
+  padding-left: 838px;
+  font-size: 15px;
 }
 
 .dashboard {
