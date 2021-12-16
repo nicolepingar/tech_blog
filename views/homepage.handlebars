@@ -15,6 +15,7 @@
                     <p class="col">{{this.user.username}} commented: "{{this.comment_contents}}"</p>
                 </div>
                 {{/each}}
+                {{!-- {{#if loggedIn}} --}}
                 <p>
                     <button id="{{id}}" class="btn btn-primary" type="button" data-toggle="collapse"
                         data-target="#collapseExample{{id}}" aria-expanded="false"
@@ -29,7 +30,9 @@
                             Comment</button>
                     </div>
                 </div>
-
+                {{!-- {{else}}
+                <a class="btn btn-primary" role="button" href="/login"><i class="far fa-plus-square"></i> Comment</a>
+                {{/if}} --}}
 
                 <div class="card-footer text-muted">
                     Posted by: {{user.username}} on {{format_date createdAt}}.

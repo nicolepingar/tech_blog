@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 // GET all posts for homepage
 router.get('/', async (req, res) => {
     try {
-        const postData = await Post.findAll({ //!!! why isn't this working
+        const postData = await Post.findAll({
             include: [{
                 model: Comment,
                 attributes: [

@@ -26,7 +26,7 @@ body {
 }
 
 .usernameMain {
-  padding-left: 838px;
+  padding-left: 925px;
   font-size: 15px;
 }
 
@@ -114,4 +114,8 @@ i {
   background-color: #FF69B4;
   border-color: transparent;
   box-shadow: none
+}
+
+.signup-form {
+  background-color: white;
 }
